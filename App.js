@@ -1,12 +1,18 @@
 import React from "react";
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Alert } from 'react-native';
 import Loading from "./Loading";
 import Geolocation from '@react-native-community/geolocation';
 
 export default class extends React.Component {
   getLocation = async () => {
-    const location = await Geolocation.getCurrentPostion; 
-    console.log(location);
+    try {
+      const location = await Geolocation.getCurrentPostion(info => console.log(info)); 
+    } catch (error) {
+      Alert.alert("Sorry");
+    }
+  }
+  componentDidMount() {
+    this.getLocation();
   }
   render() {    
     return (
