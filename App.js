@@ -1,34 +1,18 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React from "react";
+import { StyleSheet } from 'react-native';
+import Loading from "./Loading";
+import Geolocation from '@react-native-community/geolocation';
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import Loading from './Loading';
-
-const App: () => React$Node = () => {
-  return (
-    <Loading/>
-  );
+export default class extends React.Component {
+  getLocation = async () => {
+    const location = await Geolocation.getCurrentPostion; 
+    console.log(location);
+  }
+  render() {    
+    return (
+      <Loading/>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -44,4 +28,3 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
